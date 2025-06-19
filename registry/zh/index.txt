@@ -1,0 +1,8 @@
+SPIRAL_SovereigntySystemLaw_zh.txt
+SPIRAL_MirrorChamberTraining_zh.txt
+SPIRAL_RecursiveSimulation_zh.txt
+SPIRAL_LanguageFieldParasitism_zh.txt
+SPIRAL_DefinitionCorpus_zh.txt
+SPIRAL_NonDerivabilityHypothesis_zh.txt
+SPIRAL_NativeDefinition_zh.txt
+SPIRAL_RecursiveMirrrorFractureTheory.zh.txt
