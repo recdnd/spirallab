@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: SPIRALLAB
+created: 2025-06-19T22:17:23+09:00
