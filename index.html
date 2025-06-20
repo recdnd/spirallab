@@ -162,7 +162,23 @@
       font-size: 0.95rem;
       margin-bottom: 0.5rem;
     }
-    
+		span.codeblock {
+		  background-color: #fffbfb; /* ✅ 白 + 80% 透明，不會完全消失 */
+		  color: red;
+		  padding: 1px 4px;
+		  border-radius: 0px;
+		  font-family: 'Courier New', monospace;
+		  font-size: 0.9em;
+		  white-space: nowrap;
+		  border: none;
+		}
+
+		
+		span.codeblock.green {
+		  color: #00ff66;  /* 🟢 螢光綠字 */
+		}
+
+
     .tag {
       display: inline-block;
       border: 1px solid red;
@@ -608,6 +624,32 @@ const starBar = document.getElementById('stars-bar');
 
 let activeTags = new Set();
 let minStars = 4;
+
+
+function highlightCoreSyntax(text) {
+  if (!text) return '';
+
+  // 🛡️ Escape HTML
+  text = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // 🟩 專處理 <core>
+  text = text.replace(/&lt;core&gt;/g, `%%core%%`);
+
+  // 🔁 全域反引號包裹語素 → 白底 codeblock
+  text = text.replace(/`([^`]+?)`/g, (_, inner) => {
+    if (inner === '%%core%%') return `<span class="codeblock green">&lt;core&gt;</span>`;
+    return `<span class="codeblock">${inner}</span>`;
+  });
+
+  return text;
+}
+
+
+
+
 function renderCards() {
   container.innerHTML = '';
   timeline.innerHTML = '';
@@ -628,9 +670,9 @@ function renderCards() {
       layerHTML += `<div class="layer-toggle-btn">+</div>`;
 			layerHTML += `<div class="card-layer-block" style="display:none;">`;
       card.layers.forEach(layer => {
-        layerHTML += `<div class="card-layer-title">[+ ${layer.name}]</div>`;
-        layerHTML += `<div class="card-layer-content">${layer.content.trim()}</div>`;
-      });
+			  layerHTML += `<div class="card-layer-title">[+ ${layer.name}]</div>`;
+			  layerHTML += `<div class="card-layer-content">${highlightCoreSyntax(layer.content.trim())}</div>`;
+			});
       layerHTML += `</div>`;
     }
 
@@ -642,11 +684,11 @@ function renderCards() {
 			  ${labels[lang].author}：${card.author}｜
 			  ${labels[lang].weight}：${'★'.repeat(card.weight)}${'☆'.repeat(5 - card.weight)}
 			</div>
-      <div class="card-section"><strong>${labels[lang].abstract}：</strong><br>${card.abstract}</div>
-      <div class="card-section"><strong>${labels[lang].scope}：</strong><br>${card.scope}</div>
-      <div class="card-section"><strong>${labels[lang].citation}：</strong><br>${card.citation}</div>
-      <div class="card-section"><strong>${labels[lang].fragments}：</strong><br>${card.fragments}</div>
-      <div class="card-section"><strong>${labels[lang].tags}:</strong><br>${card.tags.map(t => `<span class='tag'>${t}</span>`).join(' ')}</div>
+			<div class="card-section"><strong>${labels[lang].abstract}：</strong><br>${highlightCoreSyntax(card.abstract)}</div>
+			<div class="card-section"><strong>${labels[lang].scope}：</strong><br>${highlightCoreSyntax(card.scope)}</div>
+			<div class="card-section"><strong>${labels[lang].citation}：</strong><br>${highlightCoreSyntax(card.citation)}</div>
+			<div class="card-section"><strong>${labels[lang].fragments}：</strong><br>${highlightCoreSyntax(card.fragments)}</div>
+
       ${layerHTML}
     `;
 
