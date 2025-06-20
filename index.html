@@ -531,6 +531,7 @@
 <!-- 📄 卡片容器 -->
 <div id="cardContainer">
   <!-- JS 動態生成卡片 -->
+  
 </div>
 <!-- sus擴散footer -->
 <div class="footer-bar">☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆</div>
@@ -833,6 +834,7 @@ document.getElementById('toggleTag').onclick = () => {
 };
 
 
+
 document.getElementById('toggleTime').onclick = () => {
   const timeMenu = document.getElementById('timeMenu');
   timeMenu.style.display = timeMenu.style.display === 'none' ? 'block' : 'none';
@@ -916,16 +918,6 @@ document.getElementById('toggleTime').onclick = () => {
 // 🚀 啟動頁面：第一次渲染
 renderCards();
 
-// ✅ 極簡訪問記錄語焰
-const logKey = 'spirallab-visit-log';
-const alreadyVisited = localStorage.getItem(logKey);
-
-if (!alreadyVisited) {
-  console.log('🌀 First-time visitor detected.');
-  localStorage.setItem(logKey, new Date().toISOString());
-} else {
-  console.log('🔁 Returning visitor since:', alreadyVisited);
-}
 
 </script>
 </body>
