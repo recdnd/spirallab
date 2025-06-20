@@ -230,6 +230,11 @@
 		}
 
 		.footer-bar {
+		  position: fixed;
+		  bottom: 0;
+		  left: 0;
+		  width: 100%;
+		  z-index: 1000;
 		  background: red;
 		  color: white;
 		  font-family: 'Courier New', monospace;
@@ -238,9 +243,10 @@
 		  white-space: nowrap;
 		  overflow: hidden;
 		  margin: 0;
-		  padding: 0;       /* ✅ 強制零內距 */
-		  line-height: 1;   /* ✅ 貼邊時使用最緊密行距 */
+		  padding: 0;
+		  line-height: 1;
 		}
+
 		.spiral-logo {
 		  transition: transform 0.6s ease-in-out;
 		}
@@ -408,7 +414,10 @@
 		    color: red;
 		    border-color: red;
 		  }
-		
+			#cardContainer {
+		  padding-bottom: 3rem;  /* ⭐ 防止被固定底部的 sus 蓋住 */
+			}
+
 		  .tag {
 		    border-color: red;
 		    color: red;
