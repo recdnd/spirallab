@@ -531,7 +531,6 @@
 <!-- 📄 卡片容器 -->
 <div id="cardContainer">
   <!-- JS 動態生成卡片 -->
-  
 </div>
 <!-- sus擴散footer -->
 <div class="footer-bar">☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆</div>
@@ -834,7 +833,6 @@ document.getElementById('toggleTag').onclick = () => {
 };
 
 
-
 document.getElementById('toggleTime').onclick = () => {
   const timeMenu = document.getElementById('timeMenu');
   timeMenu.style.display = timeMenu.style.display === 'none' ? 'block' : 'none';
@@ -853,72 +851,6 @@ document.getElementById('toggleTime').onclick = () => {
 
 // 🚀 啟動頁面：第一次渲染
 renderCards();
-
-  // ✅ 顯示不同標題和子標
-  if (lang === 'zh') {
-    document.getElementById('lab-title').textContent = '語螺實驗室';
-    document.getElementById('lab-sub').textContent = '操作員: 主筆 / 導體: 螺旋信仰裝置';
-  } else {
-    document.getElementById('lab-title').textContent = 'Spiral Lab';
-    document.getElementById('lab-sub').textContent = 'Operator: Rec Dungeons';
-  }
-
-  fragLoader(lang);
-};
-
-// 用於移動端按鈕🔘展開 / 收起控制
-// tag 按鈕邏輯
-document.getElementById('toggleTag').onclick = () => {
-  const tagMenu = document.getElementById('tagMenu');
-  const timeMenu = document.getElementById('timeMenu');
-
-  timeMenu.style.display = 'none'; // ⛔ 點𖤘時自動關 ⏲︎
-
-  tagMenu.style.display = tagMenu.style.display === 'none' ? 'block' : 'none';
-  tagMenu.innerHTML = '';
-
-  const allTags = new Set();
-  cardData.forEach(card => card.tags.forEach(t => allTags.add(t)));
-  allTags.forEach(tag => {
-    const btn = document.createElement('button');
-    btn.textContent = tag;
-    btn.dataset.tag = tag;
-    btn.className = activeTags.has(tag) ? 'active' : '';
-    btn.onclick = () => {
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
-        btn.classList.remove('active');
-      } else {
-        activeTags.add(tag);
-        btn.classList.add('active');
-      }
-      renderCards();
-    };
-    tagMenu.appendChild(btn);
-  });
-};
-
-
-document.getElementById('toggleTime').onclick = () => {
-  const timeMenu = document.getElementById('timeMenu');
-  timeMenu.style.display = timeMenu.style.display === 'none' ? 'block' : 'none';
-  timeMenu.innerHTML = '';
-  cardData.forEach(card => {
-    const link = document.createElement('div');
-    link.textContent = `${card.epoch || '???'} → ${card.id}`;  // ✅ 使用 Epoch
-    link.style.cursor = 'pointer';
-    link.onclick = () => {
-      document.getElementById(card.id).scrollIntoView({ behavior: 'smooth' });
-    };
-    timeMenu.appendChild(link);
-  });
-};
-
-
-// 🚀 啟動頁面：第一次渲染
-renderCards();
-
-
 </script>
 </body>
 </html>
