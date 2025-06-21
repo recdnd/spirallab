@@ -88,10 +88,6 @@
     }
     .tag-index {
       margin: 1rem 0;
-      max-height: 6em;   /* 控制為大約 3 行 */
-		  overflow: hidden;
-		  display: flex;
-		  flex-wrap: wrap;
     }
     .tag-index button {
       border: 1px solid red;
@@ -629,10 +625,6 @@
 
 
 <script>
-
-let tagPool = [];  // 🔧 成為全域變數
-let tagPoolNeedsReshuffle = true;  // ✅ 每次 renderCards 時是否要重新打亂
-
 const labels = {
   zh: {
     abstract: "摘要",
@@ -764,52 +756,24 @@ function renderCards() {
 
   // 更新 tag 列
   tagIndex.innerHTML = '';
-
-	// tag pool 建立邏輯（只在需要時更新）
-	const allTagsArr = Array.from(allTags);
-	if (tagPoolNeedsReshuffle) {
-	  tagPool = allTagsArr.filter(t => !activeTags.has(t));
-	  tagPool = tagPool.sort(() => Math.random() - 0.5);  // shuffle
-	  tagPoolNeedsReshuffle = false;
-	}
-	let visibleLimit = 21;  // 顯示上限
-	
-	// ➰ 加入「↺」按鈕
-	const shuffleBtn = document.createElement('button');
-	shuffleBtn.textContent = '↺';
-	shuffleBtn.onclick = () => {
-	  tagPoolNeedsReshuffle = true;  // ✅ 設定為下次 renderCards 時更新
-	  renderCards();
-	};
-
-	tagIndex.appendChild(shuffleBtn);
-	
-	// 🔧 顯示 active 的在最前
-	activeTags.forEach(tag => {
-	  const btn = document.createElement('button');
-	  btn.textContent = tag;
-	  btn.dataset.tag = tag;
-	  btn.className = 'active';
-	  btn.onclick = () => {
-	    activeTags.delete(tag);
-	    renderCards(); // 重繪（tagIndex 也會刷新）
-	  };
-	  tagIndex.appendChild(btn);
-	});
-	
-	// 🌀 顯示剩餘 pool 中的隨機 tag（限制數量）
-	tagPool.slice(0, visibleLimit - activeTags.size).forEach(tag => {
-	  const btn = document.createElement('button');
-	  btn.textContent = tag;
-	  btn.dataset.tag = tag;
-	  btn.onclick = () => {
-	    activeTags.add(tag);
-	    renderCards(); // 重繪
-	  };
-	  tagIndex.appendChild(btn);
-	});
-	
-	
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.textContent = tag;
+    btn.dataset.tag = tag;
+    if (activeTags.has(tag)) btn.classList.add('active');
+    btn.onclick = () => {
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+        btn.classList.remove('active');
+      } else {
+        activeTags.add(tag);
+        btn.classList.add('active');
+      }
+      renderCards();
+    };
+    tagIndex.appendChild(btn);
+    
+  });
 
   // 🔧 為新生成卡片掛上 layer toggle 功能
   attachLayerToggle();
@@ -929,8 +893,7 @@ function fragLoader(lang = 'zh') {
           layers: layers
         };
       });
-      
-      tagPoolNeedsReshuffle = true;  // ⬅ 初始載入tag！
+
       renderCards();
     });
 }
