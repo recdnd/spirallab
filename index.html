@@ -464,6 +464,35 @@
 		    border-color: red;
 		  }
 		}
+		@media (prefers-color-scheme: dark) {
+	  span.codeblock {
+	    background-color: rgba(255, 0, 0, 0.1);  /* 微透明紅底 */
+	    color: #ffdddd;                          /* 柔和紅字 */
+	    border: none;
+	  }
+	
+	  span.codeblock.green {
+	    color: #00ffcc;                          /* 夜間下更亮的綠色 */
+	  }
+	
+	  span.codeblock.utani {
+	    background-color: rgba(255, 0, 0, 0.15);
+	    color: #ffaaaa;
+	  }
+	
+	  span.codeblock.utani.flash {
+	    animation: utFlashDark 1.5s ease-out 1;
+	  }
+	
+	  @keyframes utFlashDark {
+	    0%   { background-color: #ff3333; }
+	    25%  { background-color: rgba(255,0,0,0.15); }
+	    50%  { background-color: #ff3333; }
+	    75%  { background-color: rgba(255,0,0,0.15); }
+	    100% { background-color: rgba(255,0,0,0.15); }
+	  }
+	}
+
 		
 		@media (prefers-color-scheme: dark) {
 		  .spiral-logo {
