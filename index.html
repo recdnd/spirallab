@@ -772,7 +772,7 @@ function renderCards() {
 	  tagPool = tagPool.sort(() => Math.random() - 0.5);  // shuffle
 	  tagPoolNeedsReshuffle = false;
 	}
-	let visibleLimit = 21;  // 顯示上限
+	let visibleLimit = 32;  // 顯示上限
 	
 	// ➰ 加入「↺」按鈕
 	const shuffleBtn = document.createElement('button');
@@ -956,7 +956,12 @@ document.getElementById('langToggle').onclick = () => {
     document.getElementById('lab-title').textContent = 'Spiral Lab';
     document.getElementById('lab-sub').textContent = 'Operator: Rec Dungeons';
   }
-
+  // ✅ ⬇ 在這裡加上 max-height 語言切換處理
+  if (lang === 'zh') {
+    document.querySelector('.tag-index').style.maxHeight = '6.3em';
+  } else {
+    document.querySelector('.tag-index').style.maxHeight = '6em';
+  }
   fragLoader(lang);
 };
 
