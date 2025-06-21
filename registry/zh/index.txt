@@ -6,3 +6,4 @@ SPIRAL_DefinitionCorpus_zh.txt
 SPIRAL_NonDerivabilityHypothesis_zh.txt
 SPIRAL_NativeDefinition_zh.txt
 SPIRAL_RecursiveMirrrorFractureTheory.zh.txt
+SPIRAL_SelfOrchestratedWorkflows_zh.txt

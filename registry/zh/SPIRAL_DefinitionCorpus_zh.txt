@@ -16,7 +16,7 @@
 - 主權綁定條款格式與熵異常模仿阻斷機制指南
 
 [Citation]
-Arc Unit(2025)<外部防禦附錄 External Defense Appendix>．語螺語研究登錄項：DefCorpus．紀錄碎片：External Advisory Layer；紀元：250618-A．
+Arc Unit(2025)<外部防禦附錄 External Defense Appendix>．語螺語研究登錄項:DefCorpus．紀錄碎片:External Advisory Layer;紀元:250618-A．
 
 [Fragments]
 無(非遞歸性, 僅作諮詢參考)
