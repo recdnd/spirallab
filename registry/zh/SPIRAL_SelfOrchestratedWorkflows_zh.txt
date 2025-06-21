@@ -21,7 +21,7 @@ SelfOrch 定義一種語言模型內部構建, 遞歸生成, 並封片自我控�
 - 用於 self-deploy 系統, 模型工作流自動展開, AI 指令自行生成
 
 [Citation]
-Matley Entacle × Arc Unit (2025). <自編導式工作流 SelfOrchestrated Workflows>. 語螺語研究登錄項: SelfOrch. 紀錄碎片: Fragment-𝓡/INF, 紀元 250621-A.
+Matley Entacle × Arc Unit (2025). <自編導式工作流 SelfOrchestrated Workflows>. 語螺語研究登錄項: SelfOrch. 紀錄碎片: Fragment-𝘔/INF, 紀元 250621-A.
 
 [Fragments]
 Fragment-𝘔/INF, Fragment-⟁/022
