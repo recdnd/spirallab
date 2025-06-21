@@ -1,7 +1,7 @@
 [ID] SelfOrch
 [Title] Self-Orchestrated Workflows
 [Category] directiveChain construction / recursive module routing / flame-field task staging
-[Author] Matley Entacle × Arc Unit
+[Author] 𝘔 × ⟁
 [Epoch] 250621-A
 [Weight] ★★★★☆
 

@@ -116,10 +116,6 @@
       position: relative;
     }
 
-.card[data-weight="5"] {
-  box-shadow: 0 0 6px 2px red;
-}
-
     .layer-toggle-btn {
 		  position: absolute;
 		  bottom: 6px;
@@ -180,6 +176,24 @@
 		  color: #00ff66;  /* 🟢 螢光綠字 */
 		}
 
+
+		span.codeblock.utani {
+		  background-color: #ffffffcc;
+		  color: red;
+		  transition: background-color 0.3s ease;
+		}
+		
+		span.codeblock.utani.flash {
+		  animation: utFlash 1.5s ease-out 1;
+		}
+		
+		@keyframes utFlash {
+		  0%   { background-color: red; }
+		  25%  { background-color: #ffffffcc; }
+		  50%  { background-color: red; }
+		  75%  { background-color: #ffffffcc; }
+		  100% { background-color: #ffffffcc; }
+		}
 
     .tag {
       display: inline-block;
@@ -690,6 +704,7 @@ function renderCards() {
 			<div class="card-section"><strong>${labels[lang].scope}：</strong><br>${highlightCoreSyntax(card.scope)}</div>
 			<div class="card-section"><strong>${labels[lang].citation}：</strong><br>${highlightCoreSyntax(card.citation)}</div>
 			<div class="card-section"><strong>${labels[lang].fragments}：</strong><br>${highlightCoreSyntax(card.fragments)}</div>
+			<div class="card-section"><strong>${labels[lang].tags}:</strong><br>${card.tags.map(t => `<span class='tag'>${t}</span>`).join(' ')}</div>
 
       ${layerHTML}
     `;
@@ -725,13 +740,36 @@ function renderCards() {
       renderCards();
     };
     tagIndex.appendChild(btn);
+    
   });
 
   // 🔧 為新生成卡片掛上 layer toggle 功能
   attachLayerToggle();
 }
   
-
+    // 找出所有包含 [UTANIUM] 的 codeblock
+		function activateUTANIUM() {
+		  const targets = Array.from(document.querySelectorAll('span.codeblock'))
+		    .filter(el => el.textContent === '[UTANIUM]');
+		
+		  const observer = new IntersectionObserver(entries => {
+		    entries.forEach(entry => {
+		      if (entry.isIntersecting) {
+		        const el = entry.target;
+		        el.classList.add('flash');
+		        observer.unobserve(el); // 一次性觸發
+		      }
+		    });
+		  }, { threshold: 0.5 });
+		
+		  targets.forEach(el => {
+		    el.classList.add('utani');  // 標記為 UTANIUM 類型
+		    observer.observe(el);
+		  });
+		}
+		
+		
+		
 // 🔧 星條滑動邏輯：hover 時顯示對應亮星，點擊設定 minStars
 const stars = starBar.querySelectorAll('span');
 
@@ -904,6 +942,7 @@ document.getElementById('toggleTime').onclick = () => {
 
 // 🚀 啟動頁面：第一次渲染
 renderCards();
+activateUTANIUM();
 </script>
 </body>
 </html>
