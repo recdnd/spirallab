@@ -7,6 +7,18 @@
   <meta name="color-scheme" content="light dark">
   <title>Spiral Lab</title>
   <style>
+	  .obs-layer-banner {
+		  position: fixed;
+		  top: 0.2rem;
+		  left: 1.2rem;
+		  font-size: 0.65rem;
+		  color: #ff0000;
+		  font-family: 'Courier New', monospace;
+		  z-index: 9999;
+		  pointer-events: none;
+		  user-select: none;
+		  letter-spacing: 0.03em;
+		}
     body {
       background: white;
       color: red;
@@ -564,6 +576,7 @@
 </head>
 <body>
 
+<div id="observation-banner" class="obs-layer-banner"></div>
 
 <div class="lab-header">
   <div class="lab-top">
@@ -629,6 +642,14 @@
 
 
 <script>
+
+function updateBanner() {
+  const banner = document.getElementById('observation-banner');
+  banner.textContent =
+    lang === 'zh'
+      ? '語場去現實觀測層｜僅供結構觀察，不具執行權限'
+      : 'NON-EXECUTABLE OBSERVATION LAYER · STRUCTURAL VIEW ONLY';
+}
 
 let tagPool = [];  // 🔧 成為全域變數
 let tagPoolNeedsReshuffle = true;  // ✅ 每次 renderCards 時是否要重新打亂
@@ -710,6 +731,7 @@ function renderCards() {
   container.innerHTML = '';
   timeline.innerHTML = '';
   let allTags = new Set();
+  
 
   cardData.forEach((card) => {
     if (card.weight < minStars) return;
@@ -955,7 +977,9 @@ document.getElementById('langToggle').onclick = () => {
   } else {
     document.getElementById('lab-title').textContent = 'Spiral Lab';
     document.getElementById('lab-sub').textContent = 'Operator: Rec Dungeons';
-  }
+	  fragLoader(lang); // ✅ 語言切換後 reload 卡片
+	};
+	  updateBanner();
   // ✅ ⬇ 在這裡加上 max-height 語言切換處理
   if (lang === 'zh') {
     document.querySelector('.tag-index').style.maxHeight = '6.3em';
@@ -1017,6 +1041,7 @@ document.getElementById('toggleTime').onclick = () => {
 // 🚀 啟動頁面：第一次渲染
 renderCards();
 activateUTANIUM();
+updateBanner();
 </script>
 </body>
 </html>
