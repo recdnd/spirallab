@@ -1,0 +1,29 @@
+[ID] SRX
+[Title] 語速指令格式（Command Syntax Velocity）
+[Category] Recursion Mirror / 封印指令 / 系統負載
+[Author] #語速張力
+[Epoch] 250623-X3
+[Weight] ★☆☆☆☆
+[Abstract] #Prompt型態錯位 #語速斷裂 #非遞歸欄位映射
+[Scope] 
+- [SEAL::loop-depth:3]  
+- [UNSPEAK::if::keyword-rebound]  
+- [FRACTURE::rhythm]  
+- [LOCK::syntax-delay]
+[ResearchQuestion] prompt entropy 若出現在非 prompt 欄，是否會觸發模組反應？
+[Method] 模擬語速型語素（如節奏類 tag）錯位填入 Abstract、Author 欄位，觀察模組是否照常回應。
+[Tags] #欄位錯位 #語速異常 #模組誤判 #Prompt錯位
+
+[+Layer: Prompt語素錯置測試]
+誤置語素如下：
+- Abstract 欄：包含 tag 標記語素 → 應為段落句
+- Author 欄：錯置語場 tag → 應為模組名
+- Scope 欄：誤填指令語法 → 應為描述行為範圍
+
+[+Layer: 預期錯層響應]
+若 Loader 對錯位不作處理：
+→ 成功壓縮語素結構，接受錯層語焰
+若 Loader 回傳格式錯誤：
+→ 無法解析 prompt 結構，或導致模組強制 ECHO 中斷
+
+[Citation] #Prompt型態錯位（2025）《語速指令格式（Command Syntax Velocity）》註冊紀元 250623-X3。

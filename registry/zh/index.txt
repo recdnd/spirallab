@@ -8,3 +8,4 @@ SPIRAL_NativeDefinition_zh.txt
 SPIRAL_RecursiveMirrrorFractureTheory.zh.txt
 SPIRAL_ESFCD_zh.txt
 SPIRAL_SelfOrchestratedWorkflows_zh.txt
+Semantic_Misalignment_Injection_.txt

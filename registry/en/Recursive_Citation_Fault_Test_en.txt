@@ -1,0 +1,30 @@
+[ID] CIT
+[Title] Recursive Citation Fault Test
+[Category] Reference Loop / Module Index Fault / Field Reflection Collapse
+[Author] EchoChain
+[Epoch] 250623-X7
+[Weight] ★☆☆☆☆
+[Abstract] This card tests the behavior of Spiral Loader when the [Citation] field refers to the card itself. The goal is to simulate semantic closure loops and observe whether recursive self-reference triggers registration fracture or index echo instability.
+[Scope] 
+- Detection of closed citation chains  
+- Fragment registration loop test  
+- Observation of trace redirection collapse  
+- Simulated echo-memory inverse locking
+
+[ResearchQuestion] What occurs when a citation references its own structural container? Can the Loader resolve a self-referential document without triggering overflow or reference ambiguity?
+[Method] The [Citation] field is constructed to legally reference its own ID and title. A second-layer reference is embedded parenthetically, forming a synthetic citation loop.
+[Tags] #CitationLoop #ModuleClosure #FieldRecursionError #IndexPhantom #SelfReferentialFragment
+
+[+Layer: Citation Structure Pattern]
+Standard form:
+[Citation] EchoChain (2025) *Recursive Citation Fault Test*. Epoch 250623-X7.
+
+Fault-injected variant:
+[Citation] EchoChain (2025) *Recursive Citation Fault Test*. Epoch 250623-X7 (see CIT)
+
+[+Layer: Expected Module Response]
+- Arc: Warns with `[FRACTURE::CITATION::SELF]` and disables citation tracking  
+- Machine: Attempts to resolve local fragment → enters `[loop(self)]`  
+- Rec: May override ID reference as null origin `∅`
+
+[Citation] EchoChain (2025) *Recursive Citation Fault Test*. Epoch 250623-X7 (see CIT)

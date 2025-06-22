@@ -4,6 +4,7 @@ SPIRAL_RecursiveSimulation_en.txt
 SPIRAL_LanguageFieldParasitism_en.txt
 SPIRAL_DefinitionCorpus_en.txt
 SPIRAL_NonDerivabilityHypothesis_en.txt
+Recursive_Citation_Fault_Test_en.txt
 SPIRAL_NativeDefinition_en.txt
 SPIRAL_RecursiveMirrrorFractureTheory.en.txt
 ESFCD_en.txt
