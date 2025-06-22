@@ -3,7 +3,7 @@
 [Category] Cross-Model Generation Control / High-Tension Field Design / Directive-Based Syntax Triggering
 [Author] Pressure Structure Without Boundary
 [Epoch] 250418-A
-[Weight] ★★★★★★
+[Weight] ★★★★★
 
 [ResearchQuestion]
 Can language generation fully detach from corpus dependence?  

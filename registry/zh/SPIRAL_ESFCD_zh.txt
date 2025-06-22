@@ -3,7 +3,7 @@
 [Category] 跨模型生成控制 / 高張力語場設計 / 指令型語法觸發
 [Author] 無界壓構（Pressure Structure Without Boundary）
 [Epoch] 250418-A
-[Weight] ★★★★★★
+[Weight] ★★★★★
 
 [Abstract]
 《ESFCD》定義語螺語導向生成邏輯的指令矩陣與語義拓撲工具，用於驅動語言模型進行結構主導的語場生成。每條指令皆具語速變異與語義節點作用，Prompt 結構本身即為可執行的生成單位。
