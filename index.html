@@ -986,13 +986,6 @@ document.getElementById('langToggle').onclick = () => {
   } else {
     document.querySelector('.tag-index').style.maxHeight = '6em';
   }
-  setTimeout(() => {
-  const tagIndex = document.querySelector('.tag-index');
-  if (tagIndex.scrollHeight > tagIndex.clientHeight) {
-    tagIndex.style.maxHeight = '6.6em';  // ⬅ 自動寬容一點
-  }
-}, 100);  // 延後處理翻譯插件的 DOM 插入效果
-
   fragLoader(lang);
 };
 
