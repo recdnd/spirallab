@@ -279,7 +279,6 @@
 		  border-bottom: 2px dashed red;
   		margin-top: -0.2rem; /* 可調整 */
 		}
-
 		.footer-bar {
 		  position: fixed;
 		  bottom: 0;
@@ -383,7 +382,11 @@
 		  text-align: center;
 		  cursor: pointer;
 		}
-		
+		/* 🐹emoji位置校正 */
+		.circle-button span {
+		  display: inline-block;
+		  transform: translateY(1px); /* ✅ 向下貼近圓中心 */
+		}
 
 
 		/* 展開後 overlay 樣式 */
@@ -637,8 +640,13 @@
 <div id="cardContainer">
   <!-- JS 動態生成卡片 -->
 </div>
+
+
 <!-- sus擴散footer -->
 <div class="footer-bar">☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆sus☆</div>
+
+
+
 
 <!-- 右上角：小圓鍵區，已包成對齊單元 -->
 <div class="mobile-float-buttons">
@@ -1053,10 +1061,46 @@ document.getElementById('toggleTime').onclick = () => {
 };
 
 
+
 // 🚀 啟動頁面：第一次渲染
 renderCards();
 activateUTANIUM();
 updateBanner();
+
 </script>
+
+<script>
+// 🐹 Spiral Pet toggle 控制邏輯
+window.addEventListener('DOMContentLoaded', () => {
+  const hamster = document.createElement('iframe');
+  hamster.src = "https://cdn.abowman.com/widgets/hamster/hamster.html?up_bgColor=ffffff&up_bodyColor=ffffff&up_earColor=ffffff&up_snoutColor=f7f4e9&up_eyeColor=ff0000&up_feetColor=eedddd&up_tailColor=e6debe&up_waterColor=85ffe7&up_foodColor=ea944d&up_wheelColor=ff0000&up_wheelOuterColor=b3f4bb&up_wheelCenterColor=44ee61&up_wheelSpokeColor=4dffa3";
+  hamster.width = "180";
+  hamster.height = "135";
+  hamster.title = "Spiral Pet: Hamster";
+  hamster.style.position = "fixed";
+  hamster.style.bottom = "1.8rem"; // ⬅ 更靠近底部
+  hamster.style.right = "1.3rem";
+  hamster.style.border = "none";
+  hamster.style.zIndex = "998";
+  hamster.style.display = "none"; // ⬅ 初始隱藏
+  document.body.appendChild(hamster);
+
+  // 建立 toggle 鈕
+  const toggleBtn = document.createElement('div');
+  toggleBtn.innerHTML = '<span>ඩ</span>';
+  toggleBtn.className = "circle-button";
+  toggleBtn.style.position = "fixed";
+  toggleBtn.style.bottom = "0.7rem"; // ⬅ 按鈕再上方一點
+  toggleBtn.style.right = "0rem";
+  toggleBtn.style.zIndex = "999";
+  toggleBtn.style.cursor = "pointer";
+  toggleBtn.onclick = () => {
+    hamster.style.display = (hamster.style.display === "none") ? "block" : "none";
+  };
+  document.body.appendChild(toggleBtn);
+});
+</script>
+
+
 </body>
 </html>
