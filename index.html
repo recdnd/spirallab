@@ -10,7 +10,7 @@
 	  .obs-layer-banner {
 		  position: fixed;
 		  top: 0.2rem;
-		  left: 1.2rem;
+		  left: 0.4rem;
 		  font-size: 0.65rem;
 		  color: #ff0000;
 		  font-family: 'Courier New', monospace;
@@ -349,6 +349,16 @@
 }
 
 
+/* 📱手機放大調整 */
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+    margin: 0;
+    padding-left: 1.5rem;  /* 視覺留白適中 */
+    padding-right: 1.5rem;
+  }
+}
+
     		/* 圓鍵區容器 */
 		.mobile-float-buttons {
 		  position: fixed;
@@ -374,6 +384,8 @@
 		  cursor: pointer;
 		}
 		
+
+
 		/* 展開後 overlay 樣式 */
 		.overlay-menu {
 		  position: absolute;       /* ✅ 用 absolute 才能參照父元素位置 */
@@ -427,6 +439,8 @@
 		    transform: rotate(0deg);
 		  }
 		}
+		
+		
 		@media (max-width: 768px) {
 		  .mobile-sigil {
 		    display: block;
@@ -480,6 +494,7 @@
 		    border-color: red;
 		  }
 		}
+		
 		@media (prefers-color-scheme: dark) {
 	  span.codeblock {
 	    background-color: rgba(255, 0, 0, 0.1);  /* 微透明紅底 */
@@ -647,8 +662,8 @@ function updateBanner() {
   const banner = document.getElementById('observation-banner');
   banner.textContent =
     lang === 'zh'
-      ? '語場去現實觀測層｜僅供結構觀察，不具執行權限'
-      : 'NON-EXECUTABLE OBSERVATION LAYER · STRUCTURAL VIEW ONLY';
+      ? '⚕️語場去現實觀測層｜僅供結構觀察，不具執行權限'
+      : '⚕️NON-EXECUTABLE OBSERVATION LAYER · STRUCTURAL VIEW ONLY';
 }
 
 let tagPool = [];  // 🔧 成為全域變數
